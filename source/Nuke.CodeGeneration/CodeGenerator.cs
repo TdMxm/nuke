@@ -23,6 +23,22 @@ using static Nuke.Core.IO.PathConstruction;
 
 namespace Nuke.CodeGeneration
 {
+    //public class CodeGenerationTask : ITask
+    //{
+    //    public IBuildEngine BuildEngine { get; set; }
+    //    public ITaskHost HostObject { get; set; }
+
+    //    public ITaskItem[] InputFiles { get; set; }
+
+    //    [Output]
+    //    public ITaskItem[] OutputFiles { get; set; }
+
+    //    public bool Execute ()
+    //    {
+
+    //    }
+    //}
+
     [PublicAPI]
     public class CodeGenerator
     {
@@ -245,7 +261,8 @@ namespace Nuke.CodeGeneration
 
         private class AutomaticDecompressingWebClient : WebClient
         {
-            protected override WebRequest GetWebRequest (Uri address)
+            [CanBeNull]
+            protected override WebRequest GetWebRequest ([NotNull] Uri address)
             {
                 var request = base.GetWebRequest(address) as HttpWebRequest;
 
